@@ -45,7 +45,7 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public void removeProductFromStockByIdAndByQuantityOfProductAndProductType(Long stockId, int quantity, ProductType productType) {
+    public List<Product> removeProductFromStockByIdAndByQuantityOfProductAndProductType(Long stockId, int quantity, ProductType productType) {
         // get stock by id
         Stock stock = stockDAO.findById(stockId);
         // get current ProductList
@@ -53,7 +53,8 @@ public class StockServiceImpl implements StockService {
         List<Product> productListToRemove = StockHelper.createListOfProductToRemove(quantity, productType, listOfProdcut.stream());
         // change state and persist
         stock.getProductList().removeAll(productListToRemove);
-        stockDAO.update(stock);
+
+        return productListToRemove;
     }
 
 }

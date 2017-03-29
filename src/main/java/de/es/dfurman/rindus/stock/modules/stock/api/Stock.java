@@ -1,11 +1,14 @@
 package de.es.dfurman.rindus.stock.modules.stock.api;
 
+import de.es.dfurman.rindus.stock.modules.stock.model.Product;
 import de.es.dfurman.rindus.stock.modules.stock.model.ProductType;
+import org.springframework.http.ResponseEntity;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by furmans on 29.03.17
@@ -21,6 +24,6 @@ public interface Stock {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    Response getProductFromStock(final Long stockId, final int quantity, final ProductType productType);
+    ResponseEntity<List<Product>> getProductFromStock(final Long stockId, final int quantity, final ProductType productType);
 
 }
