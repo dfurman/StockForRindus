@@ -1,0 +1,7 @@
+.classpath
+.project
+.settings/
+.idea/
+target/
+.idea/workspace.xml
+NoovaShow.iml
