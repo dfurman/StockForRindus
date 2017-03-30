@@ -34,6 +34,4 @@
     <!-- Enable annotation driven transaction management -->
     <tx:annotation-driven/>
 
-    <!-- 3-show the dao class  -->
-    <!--<context:component-scan base-package="de.es.dfurman.rindus.stock.modules.stock.model"/>-->
 </beans>

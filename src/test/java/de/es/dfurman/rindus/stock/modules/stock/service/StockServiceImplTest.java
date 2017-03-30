@@ -1,6 +1,9 @@
 package de.es.dfurman.rindus.stock.modules.stock.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by furmans on 29.03.17
@@ -8,17 +11,17 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @dfurmans
  */
-class StockServiceImplTest {
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
+public class StockServiceImplTest {
+    @Before
+    public void setUp() throws Exception {
     }
 
-    @org.junit.jupiter.api.Test
-    void addProductToStockByStockIdAndByQuantityOfProductAndProductType() {
+    @Test
+    public void addProductToStockByStockIdAndByQuantityOfProductAndProductType() throws Exception {
     }
 
-    @org.junit.jupiter.api.Test
-    void removeProductFromStockByIdAndByQuantityOfProductAndProductType() {
+    @Test
+    public void removeProductFromStockByIdAndByQuantityOfProductAndProductType() throws Exception {
     }
 
 }

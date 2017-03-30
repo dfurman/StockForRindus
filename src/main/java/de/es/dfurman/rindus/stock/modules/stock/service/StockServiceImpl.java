@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ import java.util.List;
  */
 
 @Transactional
-@Component
+@Component("stockServiceImpl")
 public class StockServiceImpl implements StockService {
 
     @Autowired
@@ -48,13 +49,19 @@ public class StockServiceImpl implements StockService {
     public List<Product> removeProductFromStockByIdAndByQuantityOfProductAndProductType(Long stockId, int quantity, ProductType productType) {
         // get stock by id
         Stock stock = stockDAO.findById(stockId);
-        // get current ProductList
-        List<Product> listOfProdcut = stock.getProductList();
-        List<Product> productListToRemove = StockHelper.createListOfProductToRemove(quantity, productType, listOfProdcut.stream());
-        // change state and persist
-        stock.getProductList().removeAll(productListToRemove);
+        if (stock == null) {
+            return new ArrayList<>();
+        } else {
+            // get current ProductList
+            List<Product> listOfProdcut = stock.getProductList();
+            List<Product> productListToRemove = StockHelper.createListOfProductToRemove(quantity, productType, listOfProdcut.stream());
+            // change state
+            stock.getProductList().removeAll(productListToRemove);
+            stockDAO.update(stock);
 
-        return productListToRemove;
+            return productListToRemove;
+        }
+
     }
 
 }

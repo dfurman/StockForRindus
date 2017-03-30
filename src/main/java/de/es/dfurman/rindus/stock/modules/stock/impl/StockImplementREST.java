@@ -3,9 +3,11 @@ package de.es.dfurman.rindus.stock.modules.stock.impl;
 import de.es.dfurman.rindus.stock.modules.stock.api.Stock;
 import de.es.dfurman.rindus.stock.modules.stock.model.Product;
 import de.es.dfurman.rindus.stock.modules.stock.model.ProductType;
+import de.es.dfurman.rindus.stock.modules.stock.service.StockService;
 import de.es.dfurman.rindus.stock.modules.stock.service.StockServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,8 @@ import java.util.List;
 public class StockImplementREST implements Stock {
 
     @Autowired
-    private StockServiceImpl stockService;
+    @Qualifier("stockServiceImpl")
+    private StockService stockService;
 
     @Override
     @ApiOperation(value = "refillStock", nickname = "refillStock")
@@ -44,7 +47,6 @@ public class StockImplementREST implements Stock {
             @ApiResponse(code = 500, message = "Failure")})
     public Response refillStock(Long stockId, int numberOfProduct, ProductType productType) {
         stockService.addProductToStockByStockIdAndByQuantityOfProductAndProductType(stockId, numberOfProduct, productType);
-
         return Response.status(201).build();
     }
 
@@ -66,7 +68,7 @@ public class StockImplementREST implements Stock {
     public ResponseEntity getProductFromStock(Long stockId, int quantity, ProductType productType) {
         List<Product> products = stockService.removeProductFromStockByIdAndByQuantityOfProductAndProductType(stockId, quantity, productType);
         if (products.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity(products, HttpStatus.OK);
 

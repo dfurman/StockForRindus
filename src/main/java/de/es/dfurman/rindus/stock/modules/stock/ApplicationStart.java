@@ -7,11 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
@@ -25,10 +22,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan(basePackageClasses = {
         StockDAO.class,
         StockImplementREST.class,
-        StockServiceImpl.class
+        StockServiceImpl.class,
 
 })
-
 @SpringBootApplication
 @ImportResource({"classpath:dataSource-context.xml", "classpath:persistence-context.xml"})
 public class ApplicationStart extends SpringBootServletInitializer {
