@@ -53,4 +53,12 @@ public class Product extends CommonEntity {
         this.productType = productType;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productType=" + productType +
+                '}';
+    }
 }

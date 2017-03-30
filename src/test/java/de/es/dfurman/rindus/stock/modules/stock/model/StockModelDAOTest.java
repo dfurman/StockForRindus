@@ -1,9 +1,7 @@
-package de.es.dfurman.rindus.stock.modules.stock.impl;
-
+package de.es.dfurman.rindus.stock.modules.stock.model;
 
 import de.es.dfurman.rindus.stock.modules.stock.TestSpringApplicationContext;
-import de.es.dfurman.rindus.stock.modules.stock.service.StockService;
-import de.es.dfurman.rindus.stock.modules.stock.service.StockServiceImpl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +15,22 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @dfurmans
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestSpringApplicationContext.class})
-public class StockImplementRESTTest {
+public class StockModelDAOTest {
 
     @Autowired
-    @Qualifier("stockServiceImpl")
-    private StockService stockService;
+    @Qualifier("stockDAO")
+    private StockDAO stockDAO;
 
     void setUp() {
+
     }
 
     @Test
-    public void refillStock() {
+    public void create() {
+        stockDAO.create(new StockModel());
+        Assert.assertEquals(1, stockDAO.count());
     }
-
-//    @Test
-//    void getProductFromStock() {
-//    }
 
 }

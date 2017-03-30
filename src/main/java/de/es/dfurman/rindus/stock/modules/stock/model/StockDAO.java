@@ -1,13 +1,9 @@
 package de.es.dfurman.rindus.stock.modules.stock.model;
 
 import de.es.dfurman.rindus.stock.modules.stock.model.base.dao.HibernateDAO;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,7 +15,7 @@ import javax.persistence.PersistenceContext;
  */
 @Transactional
 @Component("stockDAO")
-public class StockDAO extends HibernateDAO<Stock, Long> {
+public class StockDAO extends HibernateDAO<StockModel, Long> {
 
     /**
      * Inject Persistence Context
@@ -38,6 +34,6 @@ public class StockDAO extends HibernateDAO<Stock, Long> {
      * @See HibernateDAO
      */
     public StockDAO() {
-        super(Stock.class);
+        super(StockModel.class);
     }
 }

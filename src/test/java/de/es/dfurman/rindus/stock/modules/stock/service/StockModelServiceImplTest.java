@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  *
  * @dfurmans
  */
-public class StockServiceImplTest {
+public class StockModelServiceImplTest {
     @Before
     public void setUp() throws Exception {
     }

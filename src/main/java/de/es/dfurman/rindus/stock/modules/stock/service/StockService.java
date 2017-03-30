@@ -27,5 +27,5 @@ public interface StockService {
      * @param quantity
      * @param productType
      */
-    List<Product> removeProductFromStockByIdAndByQuantityOfProductAndProductType(final Long stockId, final int quantity, final ProductType productType);
+    List<Product> removeProductFromStockByIdAndByQuantityOfProductAndProductType(final Long stockId, final int quantity, final ProductType productType) throws NotEnoughProductInStock;
 }

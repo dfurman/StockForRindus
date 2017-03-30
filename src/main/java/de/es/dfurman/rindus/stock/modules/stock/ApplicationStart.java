@@ -23,7 +23,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
         StockDAO.class,
         StockImplementREST.class,
         StockServiceImpl.class,
-
 })
 @SpringBootApplication
 @ImportResource({"classpath:dataSource-context.xml", "classpath:persistence-context.xml"})

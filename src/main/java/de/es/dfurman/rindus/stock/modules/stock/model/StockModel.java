@@ -12,16 +12,15 @@ import java.util.List;
  */
 @Entity
 @Table(name = "stock")
-public class Stock {
+public class StockModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     /**
      * Duplication object available
      * I used the List interface cause the same Product can be stocked in warehouse
-     * One direct relations - from Stock to List of Product
+     * One direct relations - from StockModel to List of Product
      */
     @OneToMany(cascade = {CascadeType.ALL})
     public List<Product> productList = new ArrayList<>();
@@ -34,6 +33,13 @@ public class Stock {
         this.productList = productList;
     }
 
-    public Stock() {
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public StockModel() {}
 }

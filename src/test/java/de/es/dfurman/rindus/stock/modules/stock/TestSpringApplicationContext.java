@@ -19,10 +19,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         StockDAO.class,
         StockImplementREST.class,
         StockServiceImpl.class,
-//        StockRepository.class
 
 })
-@EnableTransactionManagement
+
 @ImportResource({"classpath:dataSource-context.xml", "classpath:persistence-context.xml"})
 public class TestSpringApplicationContext {
 }
