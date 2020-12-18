@@ -27,6 +27,7 @@ http://localhost:8090/swagger-ui.html#!/stockModel-implement-rest/
 ## Project Structure (see in terminal)
 
 Project Structure DIR:
+```
 .
 ├── pom.xml // MAIN Apache Maven POM
 ├── RREADME.txt // THIS INSTRUCTION
@@ -38,3 +39,5 @@ Project Structure DIR:
 │   └── test
 │       └── java // FOR TEST
 ├── target // DIR FOR BUILD
+
+```
